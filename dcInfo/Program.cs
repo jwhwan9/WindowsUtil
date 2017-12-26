@@ -14,7 +14,7 @@ namespace dcInfo
         static void Main(string[] args)
         {
             Console.WriteLine("Logon DC: "+System.Environment.GetEnvironmentVariable("logonserver"));
-
+            Console.WriteLine("Logon ID: " + System.Environment.GetEnvironmentVariable("UserName"));
             string myDomain = ListDomain();
             EnumerateComputer(myDomain);
             EnumerateUser(myDomain);
