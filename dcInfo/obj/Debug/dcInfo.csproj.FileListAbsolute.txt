@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2012\Projects\dcInfo\bin\Debug\dcInfo.exe.config
+c:\users\4874\documents\visual studio 2012\Projects\dcInfo\bin\Debug\dcInfo.exe
+c:\users\4874\documents\visual studio 2012\Projects\dcInfo\bin\Debug\dcInfo.pdb
+c:\users\4874\documents\visual studio 2012\Projects\dcInfo\obj\Debug\dcInfo.exe
+c:\users\4874\documents\visual studio 2012\Projects\dcInfo\obj\Debug\dcInfo.pdb
