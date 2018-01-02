@@ -1,0 +1,2 @@
+[控制台] -> [系統及安全性] -> [Windows Update] -> 
+手動執行 Windows Update，從最小的一個一個手動選擇更新。
