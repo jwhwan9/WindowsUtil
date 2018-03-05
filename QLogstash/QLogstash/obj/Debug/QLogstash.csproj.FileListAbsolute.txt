@@ -1,0 +1,8 @@
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\bin\Debug\QLogstash.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\bin\Debug\QLogstash.exe
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\bin\Debug\QLogstash.pdb
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\obj\Debug\QLogstash.csprojResolveAssemblyReference.cache
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\obj\Debug\QLogstash.exe
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\obj\Debug\QLogstash.pdb
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\bin\Debug\Newtonsoft.Json.dll
+c:\users\4874\documents\visual studio 2013\Projects\QLogstash\QLogstash\bin\Debug\Newtonsoft.Json.xml
