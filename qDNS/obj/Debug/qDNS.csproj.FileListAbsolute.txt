@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\qDNS\qDNS\bin\Debug\qDNS.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\qDNS\qDNS\bin\Debug\qDNS.exe
+c:\users\4874\documents\visual studio 2013\Projects\qDNS\qDNS\bin\Debug\qDNS.pdb
+c:\users\4874\documents\visual studio 2013\Projects\qDNS\qDNS\obj\Debug\qDNS.exe
+c:\users\4874\documents\visual studio 2013\Projects\qDNS\qDNS\obj\Debug\qDNS.pdb
