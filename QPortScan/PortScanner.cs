@@ -9,8 +9,7 @@ using System.Threading;
 namespace MultiPortScan
 {
     class PortScanner
-    {
-
+    {        
         private string host;
         private PortList portList;
         private bool turnOff = true;
@@ -32,15 +31,30 @@ namespace MultiPortScan
            
         }
 
+        public void addPorts(int[] PortsArray){
+            portList.addPorts(PortsArray);
+        }
+
         public void start(int threadCounter)
         {
+            Thread[] myThreads = new Thread[threadCounter];
+
+            #region Create multiple thread to perform PortScan
             for (int i = 0; i < threadCounter; i++)
             {
-
+                var handle = new EventWaitHandle(false, EventResetMode.ManualReset);
                 Thread thread1 = new Thread(new ThreadStart(RunScanTcp));
+                myThreads[i] = thread1;
                 thread1.Start();
-               
             }
+            #endregion
+
+            #region Waitfor All Thread finished
+            for (int i = 0; i < threadCounter; i++)
+            {
+                myThreads[i].Join();
+            }
+            #endregion
 
         }
 
@@ -54,15 +68,18 @@ namespace MultiPortScan
             {
                 count = port;
 
-                Thread.Sleep(1); //lets be a good citizen to the cpu
+                Thread.Sleep(100); //lets be a good citizen to the cpu
                 
                 Console.Title = host+" Port Count : " + count.ToString();
-                
+                //Console.WriteLine("try {0},TCP,{1} ", host, port);
+
                 try
                 {
-
-                    Connect(host, port, tcpTimeout);
-                    Console.WriteLine("{0},TCP,{1},probed ", host, port);
+                    
+                        string myHost = host;
+                        Connect(myHost, port, tcpTimeout);
+                        Console.WriteLine("{0},TCP,{1},probed ", myHost, port);
+                    
                 }
                 catch
                 {        

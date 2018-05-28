@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace MultiPortScan
 {
@@ -19,18 +22,19 @@ namespace MultiPortScan
             int timeout;
             string ip;
             string startPort;
-            string endPort;   
+            string endPort;
 
-            youGotItWrong: //goto: Start Again
+        youGotItWrong: //goto: Start Again
 
             //this is for the user to select a host ip
             endPort = "1024";
             ip = "127.0.0.1";
             startPort = "0";
-            Threads = 15;
-            timeout = 1*1000;
+            Threads = 30;
+            timeout = 800;//1 * 1000;
 
-            if (args.Length >= 3) { 
+            if (args.Length >= 3)
+            {
                 ip = args[0];
                 startPort = args[1];
                 endPort = args[2];
@@ -43,8 +47,14 @@ namespace MultiPortScan
                         if (numThread <= 0)
                         {
                             Threads = 1;
-                        }else if(numThread>50){
+                        }
+                        else if (numThread > 50)
+                        {
                             Threads = 50;
+                        }
+                        else
+                        {
+                            Threads = numThread;
                         }
                     }
                 }
@@ -53,12 +63,12 @@ namespace MultiPortScan
             {
                 Console.WriteLine("QPortScan.exe [ip] [startPort] [endPort] [threads]");
             }
-            
-            
+
+
             host = ip;
 
             //this is for the user to select the start port            
-                       
+
 
             //THIS CHECKS TO SEE IF IT THE START PORT CAN BE PARSED OUT
             int number;
@@ -73,9 +83,9 @@ namespace MultiPortScan
             {
                 Console.WriteLine("Try Again NOOOB!!");
                 goto youGotItWrong;
-               // return;
+                // return;
             }
-                                             
+
             //THIS CHECKS TO SEE IF IT THE END PORT CAN BE PARSED OUT
             int number2;
             bool resultEnd = int.TryParse(endPort, out number2);
@@ -90,7 +100,7 @@ namespace MultiPortScan
                 Console.WriteLine("Try Again NOOOB!!");
 
                 goto youGotItWrong;
-               // return;
+                // return;
             }
 
             try
@@ -121,10 +131,71 @@ namespace MultiPortScan
 
             }
 
-            PortScanner ps = new PortScanner(host, portStart, portStop , timeout);
-            ps.start(Threads);
-            
+            int[] iPorts = new int[] { 1433, 3389, 4118, 4122, 8000, 8080, 9200, 9300 };
+
+            using (StreamReader sr = new StreamReader(@"QPortScan.txt"))
+            {
+                List<int> additionPort = new List<int>();
+                while (sr.Peek() >= 0)
+                {
+                    try
+                    {
+                        bool result = Int32.TryParse(sr.ReadLine(), out number);
+                        additionPort.Add(number);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+
+                if (additionPort.Count > 0)
+                {
+                    iPorts = additionPort.ToArray();
+                }
+            }
+
+            #region Host 如果不是 IP(副檔名.txt)，則從該文字檔讀出 IP)
+            if (host.ToLower().EndsWith(".txt"))
+            {
+                List<string> HostList = new List<string>();
+                using (StreamReader sr = new StreamReader(host))
+                {
+                    while (sr.Peek() >= 0)
+                    {
+                        try
+                        {
+                            string myIP = sr.ReadLine();
+                            if (!myIP.Trim().Equals(""))
+                            {
+                                HostList.Add(myIP);
+                            }
+                            //Thread.Sleep(30*1000);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                }
+
+                for (int i = 0; i < HostList.Count; i++)
+                {
+                    PortScanner ps = new PortScanner(HostList[i], portStart, portStop, timeout);
+                    ps.addPorts(iPorts);
+                    ps.start(Threads);
+                }
+
+            }
+            #endregion
+            else
+            {
+                PortScanner ps = new PortScanner(host, portStart, portStop, timeout);
+                ps.addPorts(iPorts);
+                ps.start(Threads);
+            }
+
         }
-        
+
     }
 }
