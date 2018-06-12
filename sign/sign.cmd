@@ -1,0 +1,1 @@
+signtool sign /v /f InfoSecIR.pfx %1

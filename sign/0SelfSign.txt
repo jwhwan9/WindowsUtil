@@ -1,0 +1,24 @@
+[必須取得以下工具]
+
+1. MSFT signtool.exe
+   -sign exe 的工具
+
+2. MSFT makecert.exe
+   -產生 sign key (certificate)
+
+3. MSFT pvk2pfx.exe
+   -將 certificate 轉成 signtool 可用的格式
+
+[下載]
+   Windows Developer SDK
+   -https://msdn.microsoft.com/en-us/library/aa387764.aspx
+
+***以上檔案需要在同樣目錄才不會出現 Error: File Not Found。
+
+製作 Certificate
+
+>makecert.exe -n "CN=InfoSecIR" -r -sv InfoSecIR.pvk InfoSecIR.cer
+
+>pvk2pfx.exe -pvk InfoSecIR.pvk -pi mypassword -spc InfoSecIR.cer -pfx InfoSecIR.pfx -f
+
+>signtool sign /v /f InfoSecIR.pfx PSExec.exe
