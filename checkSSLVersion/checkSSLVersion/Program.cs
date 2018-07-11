@@ -25,19 +25,20 @@ namespace qSSLVersion
 
             string sslVersion = "";
             bool Ssl2Mark = false, Ssl3Mark = false, TlsMark = false, Tls11Mark = false, Tls12Mark = false;
+            string Ssl2Info = "", Ssl3Info = "", TlsInfo = "", Tls11Info = "", Tls12Info = "";
 
-            Ssl2Mark = IsSSLv2(host);
-            Ssl3Mark = IsSSLv3(host);
-            TlsMark = IsTLS(host);
-            Tls11Mark = IsTLS11(host);
-            Tls12Mark = IsTLS12(host);
+            Ssl2Mark = IsSSLv2(host, out Ssl2Info);
+            Ssl3Mark = IsSSLv3(host, out Ssl3Info);
+            TlsMark = IsTLS(host, out TlsInfo);
+            Tls11Mark = IsTLS11(host, out Tls11Info);
+            Tls12Mark = IsTLS12(host, out Tls12Info);
 
             #region 將各版本 SSL 支援清單列出來
-            if (Ssl2Mark) sslVersion += " SSLv2";
-            if (Ssl3Mark) sslVersion += " SSLv3";
-            //if (TlsMark) sslVersion += " TLS";
-            if (Tls11Mark) sslVersion += " TLSv1.1";
-            if (Tls12Mark) sslVersion += " TLSv1.2";
+            if (Ssl2Mark) sslVersion += " ,SSLv2=" + Ssl2Info;
+            if (Ssl3Mark) sslVersion += " ,SSLv3="+Ssl3Info;
+            //if (TlsMark) sslVersion += " ,[TLS]=" + TlsInfo;
+            if (Tls11Mark) sslVersion += " ,TLSv1.1="+Tls11Info;
+            if (Tls12Mark) sslVersion += " ,TLSv1.2="+Tls12Info;
             #endregion
 
             Console.WriteLine(host + ":" + sslVersion);
@@ -66,15 +67,17 @@ namespace qSSLVersion
         #endregion
 
         #region Check 是否支援 TLS v1.2
-        static bool IsTLS12(string host)
+        static bool IsTLS12(string host, out string cryptInfo)
         {
             
             bool SupportMark = true;
             SslStream ss = createSSL(host);
+            cryptInfo ="";
 
             try
             {
                 ss.AuthenticateAsClient(host, new X509CertificateCollection(), SslProtocols.Tls12, false);
+                cryptInfo = "[Cipher]:" + ss.CipherAlgorithm + "/" + ss.CipherStrength + " bits|[Hash]:" + ss.HashAlgorithm + "/" + ss.HashStrength + " bits";
                 SupportMark = true;
             }
             catch (Exception ex)
@@ -86,13 +89,17 @@ namespace qSSLVersion
         #endregion
 
         #region Check 是否支援 TLS v1.1
-        static bool IsTLS11(string host)
+        static bool IsTLS11(string host, out string cryptInfo)
         {
             bool SupportMark = true;
             SslStream ss = createSSL(host);
+            cryptInfo = "";
+
             try
             {
                 ss.AuthenticateAsClient(host, new X509CertificateCollection(), SslProtocols.Tls11, false);
+                cryptInfo = "[Cipher]:" + ss.CipherAlgorithm + "/" + ss.CipherStrength + " bits)|[Hash]:" + ss.HashAlgorithm + "/" + ss.HashStrength + " bits";
+
                 SupportMark = true;
             }
             catch (Exception ex)
@@ -104,13 +111,17 @@ namespace qSSLVersion
         #endregion
 
         #region Check 是否支援 TLS
-        static bool IsTLS(string host)
+        static bool IsTLS(string host, out string cryptInfo)
         {
             bool SupportMark = true;
             SslStream ss = createSSL(host);
+            cryptInfo = "";
+
             try
             {
                 ss.AuthenticateAsClient(host, new X509CertificateCollection(), SslProtocols.Tls, false);
+                cryptInfo = "[Cipher]:" + ss.CipherAlgorithm + "/" + ss.CipherStrength + " bits)|[Hash]:" + ss.HashAlgorithm + "/" + ss.HashStrength + " bits";
+
                 SupportMark = true;
             }
             catch (Exception ex)
@@ -122,14 +133,17 @@ namespace qSSLVersion
         #endregion
 
         #region Check 是否支援 SSL v3
-        static bool IsSSLv3(string host)
+        static bool IsSSLv3(string host, out string cryptInfo)
         {
             bool SupportMark = true;
             SslStream ss = createSSL(host);
-            
+            cryptInfo = "";
+
             try
             {
                 ss.AuthenticateAsClient(host, new X509CertificateCollection(), SslProtocols.Ssl3, false);
+                cryptInfo = "[Cipher]:" + ss.CipherAlgorithm + "/" + ss.CipherStrength + " bits)|[Hash]:" + ss.HashAlgorithm + "/" + ss.HashStrength + " bits";
+
                 SupportMark = true;
             }
             catch (Exception ex)
@@ -141,14 +155,17 @@ namespace qSSLVersion
         #endregion
 
         #region Check 是否支援 SSL v2
-        static bool IsSSLv2(string host)
+        static bool IsSSLv2(string host, out string cryptInfo)
         {
             bool SupportMark = true;
             SslStream ss = createSSL(host);
+            cryptInfo = "";
 
             try
             {
                 ss.AuthenticateAsClient(host, new X509CertificateCollection(), SslProtocols.Ssl2, false);
+                cryptInfo = "[Cipher]:" + ss.CipherAlgorithm + "/" + ss.CipherStrength + " bits)|[Hash]:" + ss.HashAlgorithm + "/" + ss.HashStrength + " bits";
+
                 SupportMark = true;
             }
             catch (Exception ex)
