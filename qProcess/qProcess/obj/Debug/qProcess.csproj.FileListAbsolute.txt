@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\qProcess\qProcess\bin\Debug\qProcess.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\qProcess\qProcess\bin\Debug\qProcess.exe
+c:\users\4874\documents\visual studio 2013\Projects\qProcess\qProcess\bin\Debug\qProcess.pdb
+c:\users\4874\documents\visual studio 2013\Projects\qProcess\qProcess\obj\Debug\qProcess.exe
+c:\users\4874\documents\visual studio 2013\Projects\qProcess\qProcess\obj\Debug\qProcess.pdb
