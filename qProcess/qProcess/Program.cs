@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Management;
 
@@ -11,20 +9,37 @@ namespace qProcess
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {            
             Process[] processlist = Process.GetProcesses();
-
-            Console.WriteLine("Process,PID,Commandline");
+            Console.WriteLine("Process,PID,Title,Owner,SessionID,ServiceName,Svchost Path,Commandline");
 
             foreach (Process theprocess in processlist)
             {                
-                //theprocess.                
-                Console.WriteLine("{0},{1},{2},{3},{4}", theprocess.ProcessName, theprocess.Id,theprocess.MainWindowTitle,GetProcessOwner(theprocess), GetCommandLine(theprocess));
-                               
+                //theprocess.                                
+                Console.WriteLine("{0},{1},{2},{3},{4},{5},{6}", 
+                    theprocess.ProcessName, 
+                    theprocess.Id,
+                    theprocess.MainWindowTitle,
+                    GetProcessOwner(theprocess),
+                    theprocess.SessionId,
+                    GetServiceName(theprocess), // [3] 如果是 Service(svchost)，會自動產生三個欄位: DisplayName,Account Owner,PathName
+                    GetCommandLine(theprocess));                               
             }
                         
             //Console.ReadKey();
+        }
+
+        public static string GetServiceName(Process process)
+        {
+            string servicePath = ",";
+
+            using (ManagementObjectSearcher Searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_Service WHERE ProcessId =" + "\"" + process.Id + "\""))
+            {
+                foreach (ManagementObject service in Searcher.Get())
+                    servicePath = service["DisplayName"].ToString() + "," + service["SystemName"].ToString() + "," + service["StartName"].ToString() + "," + service["PathName"].ToString();
+            }
+            return servicePath;
         }
 
         private static string GetCommandLine(Process process)
