@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\qDomain\qDomain\bin\Debug\qDomain.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\qDomain\qDomain\bin\Debug\qDomain.exe
+c:\users\4874\documents\visual studio 2013\Projects\qDomain\qDomain\bin\Debug\qDomain.pdb
+c:\users\4874\documents\visual studio 2013\Projects\qDomain\qDomain\obj\Debug\qDomain.exe
+c:\users\4874\documents\visual studio 2013\Projects\qDomain\qDomain\obj\Debug\qDomain.pdb
