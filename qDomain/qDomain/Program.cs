@@ -6,6 +6,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
+using System.Diagnostics;
 
 namespace qDomain
 {
@@ -30,9 +31,51 @@ namespace qDomain
                 DomainName = args[0];
                 Keyword = args[1];
             }
-            
+
             ListGroup(DomainName, Keyword);
+
+            ListDCInfo(DomainName);
+            
             //Console.ReadLine();
+        }
+
+        static void ListDCInfo(string DomainName)
+        {
+            string WinDir = System.Environment.GetEnvironmentVariable("WINDIR");
+            string UserName = System.Environment.GetEnvironmentVariable("UserName");
+            string LogonServer = System.Environment.GetEnvironmentVariable("LogonServer");
+
+            // C:\Windows\System32 -> C:\Windows\Sysnative
+            Console.WriteLine(GetCmdOutput(WinDir + "\\Sysnative\\nltest.exe", "/dclist:" + DomainName));
+            Console.WriteLine(GetCmdOutput(WinDir + "\\Sysnative\\nltest.exe", "/whowill:" + DomainName + " " + UserName));
+            Console.WriteLine(GetCmdOutput(WinDir + "\\Sysnative\\nltest.exe", "/server:" + LogonServer + " " + "/sc_query:" + DomainName));
+
+        }
+
+        static string GetCmdOutput(string CommandExe, string CommandArg)
+        {
+            string line = "";
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = CommandExe,
+                    Arguments = CommandArg,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            proc.Start();
+            Console.WriteLine("cmd:> "+CommandExe+" "+CommandArg);
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                 line+=proc.StandardOutput.ReadLine()+System.Environment.NewLine;
+                // do something with line
+            }
+
+            return line;
         }
 
         static void ListGroup(string DomainName, string Keyword)
