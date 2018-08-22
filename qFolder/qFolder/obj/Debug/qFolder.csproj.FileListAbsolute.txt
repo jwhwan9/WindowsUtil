@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\qFolder\qFolder\bin\Debug\qFolder.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\qFolder\qFolder\bin\Debug\qFolder.exe
+c:\users\4874\documents\visual studio 2013\Projects\qFolder\qFolder\bin\Debug\qFolder.pdb
+c:\users\4874\documents\visual studio 2013\Projects\qFolder\qFolder\obj\Debug\qFolder.exe
+c:\users\4874\documents\visual studio 2013\Projects\qFolder\qFolder\obj\Debug\qFolder.pdb
