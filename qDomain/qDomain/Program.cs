@@ -32,11 +32,67 @@ namespace qDomain
                 Keyword = args[1];
             }
 
-            ListGroup(DomainName, Keyword);
+            //ListGroup(DomainName, Keyword);
 
-            ListDCInfo(DomainName);
+            //ListDCInfo(DomainName);
+
+            //ListDomainGroup(DomainName);
+            ListDomainGroupDetailed(DomainName);
+
             
             //Console.ReadLine();
+        }
+
+        static void ListDomainGroup(string DomainName)
+        {            
+
+            // create your domain context
+            PrincipalContext ctx = new PrincipalContext(ContextType.Domain);
+
+            // define a "query-by-example" principal - here, we search for a GroupPrincipal 
+            GroupPrincipal qbeGroup = new GroupPrincipal(ctx);
+
+            // create your principal searcher passing in the QBE principal    
+            PrincipalSearcher srch = new PrincipalSearcher(qbeGroup);
+
+            // find all matches
+            foreach (var found in srch.FindAll())
+            {
+                GroupPrincipal group = GroupPrincipal.FindByIdentity(ctx, found.ToString());
+                Console.WriteLine(group);
+            }
+        }
+
+        static void ListDomainGroupDetailed(string DomainName)
+        {
+            Console.WriteLine("Item,Type,SamAccount,pName,upName,Description");
+
+            // create your domain context
+            PrincipalContext ctx = new PrincipalContext(ContextType.Domain);
+
+            // define a "query-by-example" principal - here, we search for a GroupPrincipal 
+            GroupPrincipal qbeGroup = new GroupPrincipal(ctx);
+
+            // create your principal searcher passing in the QBE principal    
+            PrincipalSearcher srch = new PrincipalSearcher(qbeGroup);
+
+            // find all matches
+            foreach (var found in srch.FindAll())
+            {
+                GroupPrincipal group = GroupPrincipal.FindByIdentity(ctx, found.ToString());
+
+                // if found....
+                if (group != null)
+                {
+                    // iterate over members
+                    foreach (Principal p in group.GetMembers())
+                    {
+                        Console.WriteLine("{0},{1},{2},{3},{4},{5}", found, p.StructuralObjectClass, p.SamAccountName, p.Name, p.UserPrincipalName, p.Description);
+                        // do whatever you need to do to those members
+                    }
+                }
+                
+            }
         }
 
         static void ListDCInfo(string DomainName)
