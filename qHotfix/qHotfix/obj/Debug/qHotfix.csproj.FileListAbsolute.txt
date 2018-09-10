@@ -1,0 +1,6 @@
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\bin\Debug\qHotfix.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\bin\Debug\qHotfix.exe
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\bin\Debug\qHotfix.pdb
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\obj\Debug\qHotfix.csprojResolveAssemblyReference.cache
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\obj\Debug\qHotfix.exe
+c:\users\4874\documents\visual studio 2013\Projects\qHotfix\qHotfix\obj\Debug\qHotfix.pdb
