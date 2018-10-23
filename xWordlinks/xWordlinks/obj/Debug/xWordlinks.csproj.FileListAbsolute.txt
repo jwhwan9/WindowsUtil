@@ -1,0 +1,6 @@
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\bin\Debug\xWordlinks.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\obj\Debug\xWordlinks.csproj.ResolveComReference.cache
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\bin\Debug\xWordlinks.exe
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\bin\Debug\xWordlinks.pdb
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\obj\Debug\xWordlinks.exe
+c:\users\4874\documents\visual studio 2013\Projects\xWordlinks\xWordlinks\obj\Debug\xWordlinks.pdb
