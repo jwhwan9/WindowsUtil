@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\QWinSystemEvent\QWinSystemEvent\bin\Debug\QWinSystemEvent.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\QWinSystemEvent\QWinSystemEvent\bin\Debug\QWinSystemEvent.exe
+c:\users\4874\documents\visual studio 2013\Projects\QWinSystemEvent\QWinSystemEvent\bin\Debug\QWinSystemEvent.pdb
+c:\users\4874\documents\visual studio 2013\Projects\QWinSystemEvent\QWinSystemEvent\obj\Debug\QWinSystemEvent.exe
+c:\users\4874\documents\visual studio 2013\Projects\QWinSystemEvent\QWinSystemEvent\obj\Debug\QWinSystemEvent.pdb
