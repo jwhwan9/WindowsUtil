@@ -94,8 +94,11 @@ namespace QMsSQL_AppEvnet
             // Enriched Event               
 
 
-            filteredEventID.Add(18454, 18454); // SQL Account Login MS-SQL
-            filteredEventID.Add(18453, 18453); // Domain Account Login MS-SQL
+            //filteredEventID.Add(18454, 18454); // SQL Account Login MS-SQL
+            //filteredEventID.Add(18453, 18453); // Domain Account Login MS-SQL
+
+            filteredEventID.Add(18455, 18455); // Domain Account Login Failed MS-SQL
+            filteredEventID.Add(18456, 18456); // SQL Account Login Failed, MS-SQL
 
 
             filteredEventCondition = new System.Collections.Generic.Dictionary<string, string>();
@@ -146,8 +149,8 @@ namespace QMsSQL_AppEvnet
                                 }
                                 #endregion
 
-                                #region 18453，Domain Account
-                                if (record.Id == 18453)
+                                #region 18453 (OK) / 18455 (Failed)，Domain Account
+                                if (record.Id == 18453 || record.Id == 18455)
                                 {
 
                                     #region Subject Info
@@ -167,8 +170,8 @@ namespace QMsSQL_AppEvnet
                                 }
                                 #endregion
 
-                                #region 18454，SQL Account
-                                else if (record.Id == 18454)
+                                #region 18454 (OK) / 18456 (Failed)，SQL Account
+                                else if (record.Id == 18454 || record.Id == 18456)
                                 {
 
                                     #region Subject Info
