@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\QMsSQL_AppEvnet\QMsSQL_AppEvnet\bin\Debug\QMsSQL_AppEvnet.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\QMsSQL_AppEvnet\QMsSQL_AppEvnet\bin\Debug\QMsSQL_AppEvnet.exe
+c:\users\4874\documents\visual studio 2013\Projects\QMsSQL_AppEvnet\QMsSQL_AppEvnet\bin\Debug\QMsSQL_AppEvnet.pdb
+c:\users\4874\documents\visual studio 2013\Projects\QMsSQL_AppEvnet\QMsSQL_AppEvnet\obj\Debug\QMsSQL_AppEvnet.exe
+c:\users\4874\documents\visual studio 2013\Projects\QMsSQL_AppEvnet\QMsSQL_AppEvnet\obj\Debug\QMsSQL_AppEvnet.pdb
