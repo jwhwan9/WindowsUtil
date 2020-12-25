@@ -1,0 +1,5 @@
+c:\users\4874\documents\visual studio 2013\Projects\LoadNET_Exe_InMemory\LoadNET_Exe_InMemory\bin\Debug\LoadNET_Exe_InMemory.exe.config
+c:\users\4874\documents\visual studio 2013\Projects\LoadNET_Exe_InMemory\LoadNET_Exe_InMemory\bin\Debug\LoadNET_Exe_InMemory.exe
+c:\users\4874\documents\visual studio 2013\Projects\LoadNET_Exe_InMemory\LoadNET_Exe_InMemory\bin\Debug\LoadNET_Exe_InMemory.pdb
+c:\users\4874\documents\visual studio 2013\Projects\LoadNET_Exe_InMemory\LoadNET_Exe_InMemory\obj\Debug\LoadNET_Exe_InMemory.exe
+c:\users\4874\documents\visual studio 2013\Projects\LoadNET_Exe_InMemory\LoadNET_Exe_InMemory\obj\Debug\LoadNET_Exe_InMemory.pdb
